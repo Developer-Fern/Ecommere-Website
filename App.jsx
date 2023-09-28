@@ -1,14 +1,15 @@
-import { useState } from 'react'
 import {
   createBrowserRouter,
   Outlet,
   RouterProvider,
   ScrollRestoration,
 } from "react-router-dom";
-import Home from './pages/Home'
+import { productsData } from "./api/Api"
 import Header from './components/Header'
+import Home from './pages/Home'
 import Cart from './pages/Cart'
 import Footer from './components/Footer';
+import Product from "./components/Product";
 
 const Layout = () => {
   return (
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: productsData
+      },
+      {
+        path: "/product/:id",
+        element: <Product />,
       },
       {
         path: "/cart",
