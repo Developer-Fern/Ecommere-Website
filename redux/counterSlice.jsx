@@ -50,5 +50,11 @@ export const counterSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart } = counterSlice.actions
+export const { 
+  addToCart,
+  deleteItem,
+  resetCart,
+  increamentQuantity,
+  decrementQuantity
+} = counterSlice.actions
 export default counterSlice.reducer
