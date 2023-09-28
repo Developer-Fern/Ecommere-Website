@@ -1,13 +1,48 @@
 import { useState } from 'react'
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  ScrollRestoration,
+} from "react-router-dom";
 import Home from './pages/Home'
 import Header from './components/Header'
+import Cart from './pages/Cart'
+import Footer from './components/Footer';
+
+const Layout = () => {
+  return (
+    <div>
+      <Header />
+      <ScrollRestoration />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
       <div className='font-bodyFont'>
-        <Header />
-        <Home />
+        <RouterProvider router={router} />
       </div>
     </>
   )
