@@ -38,7 +38,9 @@ const Header = () => {
                       </span>    
                   </div>
                   </Link>
+                  <Link to ="/login">
                   <img className='w-8 h-8 rounded-full' src={checkoutImg}></img>
+                  </Link>
           </div>
         </div>
     </div>
