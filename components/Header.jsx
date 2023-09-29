@@ -4,6 +4,7 @@ import { cartImg, eCommerce, checkoutImg } from '../assets/index'
 import { useSelector } from "react-redux";
 const Header = () => {
   const productData = useSelector((state) => state.counter.productData)
+  const userInfo = useSelector((state) => state.counter.userInfo);
   return (
     <div className="w-full h-20 bg-white font-titleFont border-b-[1px] border-b-gray-800 sticky top-0 z-50">
         <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -39,8 +40,19 @@ const Header = () => {
                   </div>
                   </Link>
                   <Link to ="/login">
-                  <img className='w-8 h-8 rounded-full' src={checkoutImg}></img>
+                  <img 
+                  className='w-8 h-8 rounded-full' 
+                  src={
+                    userInfo
+                      ? userInfo.image
+                      : checkoutImg
+                  }
+                  alt="userLogo">
+                  </img>
                   </Link>
+                  {userInfo && 
+                  <p className="text-base font-titleFont font-semibold underline underline-offset-2">
+                  {userInfo.name}</p>}
           </div>
         </div>
     </div>

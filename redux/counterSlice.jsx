@@ -46,6 +46,14 @@ export const counterSlice = createSlice({
     resetCart: (state) => {
       state.productData = [];
     },
+    // =============== User Start here ==============
+    addUser: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    removeUser: (state) => {
+      state.userInfo = null;
+    },
+    // =============== User End here ================
   },
 })
 
@@ -55,6 +63,8 @@ export const {
   deleteItem,
   resetCart,
   increamentQuantity,
-  decrementQuantity
+  decrementQuantity,
+  addUser,
+  removeUser
 } = counterSlice.actions
 export default counterSlice.reducer

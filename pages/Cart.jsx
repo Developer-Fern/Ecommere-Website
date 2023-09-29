@@ -4,6 +4,7 @@ import { cartBackground } from '../assets';
 import CartItem from '../components/CartItem';
 const Cart = () => {
   const productData = useSelector((state) => state.counter.productData)
+  const userInfo = useSelector((state) => state.counter.userInfo);
   const [totalAmt, setTotalAmt] = useState("");
   useEffect(() => {
     let price = 0;
@@ -13,7 +14,13 @@ const Cart = () => {
     });
     setTotalAmt(price.toFixed(2));
   }, [productData]);
-  
+  const handleCheckout =()=>{
+    if(userInfo){
+      setPayNow(true)
+    }else {
+
+    }
+  }
   return (
     <div>
       <img
@@ -43,7 +50,7 @@ const Cart = () => {
               Total <span className="text-xl font-bold">${totalAmt}</span>
         </p>
         <button
-        
+        onClick={handleCheckout}
         className="text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300"
         >
           Proceed to checkout
